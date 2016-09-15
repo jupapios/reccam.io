@@ -1,0 +1,16 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build
+
+# compass
+.sass-cache
+*.css
+
+# misc
+.DS_Store
+npm-debug.log

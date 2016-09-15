@@ -1,0 +1,35 @@
+{
+  "name": "reccam",
+  "version": "0.0.1",
+  "description": "https://reccam.io source code",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gotik/reccam.io.git"
+  },
+  "engines": {
+    "node": "6.5.0",
+    "npm": "3.x.x"
+  },
+  "author": "Juan Pablo Pinilla Ossa <juan@kamikazepanda.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gotik/reccam.io/issues"
+  },
+  "homepage": "https://github.com/gotik/reccam.io#readme",
+  "devDependencies": {
+    "react-scripts": "0.4.1"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/react-scripts/config/eslint.js"
+  }
+}
