@@ -1,0 +1,9 @@
+exports[`App renders null while loading 1`] = `null`;
+
+exports[`App renders the video URL from the stream 1`] = `
+<video
+  autoPlay={true}
+  loop={true}
+  muted={true}
+  src="http://some_url" />
+`;
