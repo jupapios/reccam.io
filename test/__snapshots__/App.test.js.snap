@@ -5,6 +5,7 @@ exports[`App renders null while loading 1`] = `null`;
 exports[`App renders the video URL from the stream 1`] = `
 <video
   autoPlay={true}
+  className="fullscreen-video"
   loop={true}
   muted={true}
   src="http://localhost/e75dbc24-dd2c-4157-bf0e-f0a7773e98c8" />
