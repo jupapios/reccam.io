@@ -3,7 +3,7 @@ import mediaConstraints from './config/media-constraints';
 import './App.css';
 
 class App extends Component {
-  state = { isLoading: true }
+  state = { videoURL: '' }
 
   componentWillMount() {
     navigator.mediaDevices.getUserMedia(mediaConstraints)
@@ -13,15 +13,15 @@ class App extends Component {
 
   onCameraStream = (stream) => {
     const videoURL = URL.createObjectURL(stream);
-    this.setState({ videoURL, isLoading: false });
+    this.setState({ videoURL });
   }
 
-  onCameraError = ({ message: error }) => {
+  onCameraError = (error) => {
     this.setState({ error });
   }
 
   render() {
-    if (this.state.isLoading) return null;
+    if (!this.state.videoURL) return null;
 
     return <video src={this.state.videoURL} muted loop autoPlay />;
   }
