@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "webrtc-adapter": "^2.0.3"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
