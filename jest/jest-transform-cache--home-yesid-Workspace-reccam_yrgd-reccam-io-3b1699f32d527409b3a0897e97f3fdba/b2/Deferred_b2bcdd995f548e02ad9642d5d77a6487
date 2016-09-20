@@ -1,0 +1,10 @@
+/* istanbul ignore next */"use strict";Object.defineProperty(exports, "__esModule", { value: true });function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}var Deferred =
+function /* istanbul ignore next */Deferred() {/* istanbul ignore next */var _this = this;_classCallCheck(this, Deferred);
+  this.promise = new Promise(function (resolve, reject) {
+    /* istanbul ignore next */_this.reject = reject;
+    /* istanbul ignore next */_this.resolve = resolve;
+  });
+}; /* istanbul ignore next */exports.default =
+
+
+Deferred;

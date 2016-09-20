@@ -3,3 +3,5 @@ class NavigatorUserMediaError extends Error {
   constraintName = ''
   message = ''
 }
+
+export default NavigatorUserMediaError;
