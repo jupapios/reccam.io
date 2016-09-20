@@ -11,11 +11,13 @@
 ```bash
 git clone https://github.com/gotik/reccam.io.git && cd reccam.io
 npm i
+bundle i
 ```
 
 #### 2. Run it!
 
 ```bash
+compass watch
 npm start
 ```
 
