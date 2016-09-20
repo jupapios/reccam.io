@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     if (!this.state.videoURL) return null;
 
-    return <video src={this.state.videoURL} muted loop autoPlay />;
+    return <video className="fullscreen-video" src={this.state.videoURL} muted loop autoPlay />;
   }
 }
 
