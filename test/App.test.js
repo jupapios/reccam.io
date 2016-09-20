@@ -3,25 +3,59 @@ import renderer from 'react-test-renderer';
 import App from '../src/App';
 import Deferred from './utils/Deferred';
 
+class NavigatorUserMediaError extends Error {
+  name = 'PermissionDeniedError'
+  constraintName = ''
+  message = ''
+}
+
+class MediaStream {
+  id = ''
+  active = true
+}
+
+const videoURL = 'http://localhost/e75dbc24-dd2c-4157-bf0e-f0a7773e98c8';
+function createObjectURL(stream) {
+  const className = Object.getPrototypeOf(stream).constructor.name;
+  if (className === 'Blob' || className === 'MediaStream') {
+    return videoURL;
+  }
+}
+
 describe('App', () => {
-  const getUserMediaDeferred = new Deferred();
+  let deferred;
+  let component;
+
+  beforeAll(() => {
+    URL.createObjectURL = createObjectURL;
+  });
 
   beforeEach(() => {
-    URL.createObjectURL = stream => 'http://some_url';
-    navigator.mediaDevices = { getUserMedia: constraints => getUserMediaDeferred.promise };
+    deferred = new Deferred();
+    navigator.mediaDevices = { getUserMedia: constraints => deferred.promise };
+    component = renderer.create(<App />);
   });
 
   it('renders null while loading', () => {
-    const component = renderer.create(<App />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders the video URL from the stream', async () => {
-    const component = renderer.create(<App />);
+    const stream = new MediaStream();
+    deferred.resolve(stream);
 
-    getUserMediaDeferred.resolve({});
-    await getUserMediaDeferred.promise;
-
+    await deferred.promise;
     expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders null when media access is denied', async () => {
+    const error = new NavigatorUserMediaError();
+    deferred.reject(error);
+
+    try {
+      await deferred.promise;
+    } catch(e) {
+      expect(component.toJSON()).toMatchSnapshot();
+    }
   });
 });
