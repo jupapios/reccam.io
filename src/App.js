@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import mediaConstraints from './config/media-constraints';
+import 'webrtc-adapter';
 import './App.css';
 
 class App extends Component {
