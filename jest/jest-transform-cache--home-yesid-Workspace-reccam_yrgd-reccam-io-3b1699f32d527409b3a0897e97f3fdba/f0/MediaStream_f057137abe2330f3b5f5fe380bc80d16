@@ -1,0 +1,6 @@
+/* istanbul ignore next */'use strict';Object.defineProperty(exports, "__esModule", { value: true });function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}var MediaStream = function MediaStream() {_classCallCheck(this, MediaStream);this.
+  id = '';this.
+  active = true;}; /* istanbul ignore next */exports.default =
+
+
+MediaStream;

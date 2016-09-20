@@ -2,17 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import App from '../src/App';
 import Deferred from './utils/Deferred';
-
-class NavigatorUserMediaError extends Error {
-  name = 'PermissionDeniedError'
-  constraintName = ''
-  message = ''
-}
-
-class MediaStream {
-  id = ''
-  active = true
-}
+import NavigatorUserMediaError from './utils/NavigatorUserMediaError';
+import MediaStream from './utils/MediaStream';
 
 const videoURL = 'http://localhost/e75dbc24-dd2c-4157-bf0e-f0a7773e98c8';
 function createObjectURL(stream) {

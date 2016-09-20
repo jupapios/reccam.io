@@ -1,0 +1,5 @@
+/* istanbul ignore next */"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = {
+  audio: true,
+  video: {
+    height: { ideal: 720 },
+    width: { ideal: 1280 } } };
