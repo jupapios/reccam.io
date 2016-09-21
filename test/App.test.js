@@ -41,7 +41,7 @@ describe('App', () => {
     }
   });
 
-  it('it initializes the MediaRecorder', async () => {
+  it('initializes the MediaRecorder', async () => {
     const stream = new MediaStream();
     deferred.resolve(stream);
 
