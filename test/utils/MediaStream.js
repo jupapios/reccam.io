@@ -1,5 +1,7 @@
+import uuid from 'uuid';
+
 class MediaStream {
-  id = ''
+  id = uuid.v4()
   active = true
 }
 

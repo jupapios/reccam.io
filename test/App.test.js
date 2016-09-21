@@ -3,23 +3,13 @@ import renderer from 'react-test-renderer';
 import App from '../src/App';
 import Deferred from './utils/Deferred';
 import NavigatorUserMediaError from './utils/NavigatorUserMediaError';
-import MediaStream from './utils/MediaStream';
 
-const videoURL = 'http://localhost/e75dbc24-dd2c-4157-bf0e-f0a7773e98c8';
-function createObjectURL(stream) {
-  const className = Object.getPrototypeOf(stream).constructor.name;
-  if (className === 'Blob' || className === 'MediaStream') {
-    return videoURL;
-  }
-}
+import { MediaRecorderSpy } from './utils/MediaRecorder';
+import { createObjectURLSpy } from './utils/createObjectURL';
 
 describe('App', () => {
   let deferred;
   let component;
-
-  beforeAll(() => {
-    URL.createObjectURL = createObjectURL;
-  });
 
   beforeEach(() => {
     deferred = new Deferred();
@@ -36,6 +26,7 @@ describe('App', () => {
     deferred.resolve(stream);
 
     await deferred.promise;
+    expect(createObjectURLSpy).lastCalledWith(stream);
     expect(component.toJSON()).toMatchSnapshot();
   });
 
@@ -48,5 +39,13 @@ describe('App', () => {
     } catch(e) {
       expect(component.toJSON()).toMatchSnapshot();
     }
+  });
+
+  it('it initializes the MediaRecorder', async () => {
+    const stream = new MediaStream();
+    deferred.resolve(stream);
+
+    await deferred.promise;
+    expect(MediaRecorderSpy).lastCalledWith(stream, { mimeType: 'video/webm;codecs=vp9' });
   });
 });
