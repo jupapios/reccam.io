@@ -2,22 +2,22 @@ import React from 'react';
 import App from '../src/App';
 import sinon from 'sinon';
 import { mount } from 'enzyme';
-import { mountToJson } from 'enzyme-to-json';
+import { renderToJson } from 'enzyme-to-json';
 import Deferred from './utils/Deferred';
 import NavigatorUserMediaError from './utils/NavigatorUserMediaError';
 
 describe('App', () => {
   let deferred;
-  let component;
+  let wrapper;
 
   beforeEach(() => {
     deferred = new Deferred();
     navigator.mediaDevices = { getUserMedia: constraints => deferred.promise };
-    component = mount(<App />);
+    wrapper = mount(<App />);
   });
 
   it('renders empty while loading', () => {
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
   });
 
   it('renders empty when media access is denied', async () => {
@@ -27,7 +27,7 @@ describe('App', () => {
     try {
       await deferred.promise;
     } catch(e) {
-      expect(mountToJson(component)).toMatchSnapshot();
+      expect(renderToJson(wrapper.render())).toMatchSnapshot();
     }
   });
 
@@ -40,7 +40,9 @@ describe('App', () => {
 
     await deferred.promise;
     expect(URL.createObjectURL.calledWith(stream));
-    expect(mountToJson(component)).toMatchSnapshot();
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    URL.createObjectURL.restore();
   });
 
   it('initializes the MediaRecorder', async () => {
@@ -51,5 +53,32 @@ describe('App', () => {
 
     await deferred.promise;
     expect(MediaRecorder.calledWith(stream, { mimeType: 'video/webm;codecs=vp9' }));
+
+    MediaRecorder.restore();
+  });
+
+  it('hides/shows the buttons based on the recorder\' state ', async () => {
+    const videoURL = 'http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517';
+    sinon.stub(URL, 'createObjectURL', stream => videoURL);
+
+    const stream = new MediaStream();
+    deferred.resolve(stream);
+
+    await deferred.promise;
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    wrapper.ref('start').simulate('click');
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    wrapper.ref('pause').simulate('click');
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    wrapper.ref('resume').simulate('click');
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    wrapper.ref('stop').simulate('click');
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    URL.createObjectURL.restore();
   });
 });

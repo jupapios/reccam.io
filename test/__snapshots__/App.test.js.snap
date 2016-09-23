@@ -1,14 +1,102 @@
-exports[`App renders empty when media access is denied 1`] = `<App />`;
+exports[`App hides/shows the buttons based on the recorder' state  1`] = `
+<div>
+  <video
+    autoplay=""
+    class="fullscreen"
+    loop=""
+    src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
+  <button>
+    Start Record
+  </button>
+  <button
+    disabled="">
+    Pause Record
+  </button>
+</div>
+`;
 
-exports[`App renders empty while loading 1`] = `<App />`;
+exports[`App hides/shows the buttons based on the recorder' state  2`] = `
+<div>
+  <video
+    autoplay=""
+    class="fullscreen"
+    loop=""
+    src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
+  <button>
+    Stop Record
+  </button>
+  <button>
+    Pause Record
+  </button>
+</div>
+`;
+
+exports[`App hides/shows the buttons based on the recorder' state  3`] = `
+<div>
+  <video
+    autoplay=""
+    class="fullscreen"
+    loop=""
+    src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
+  <button>
+    Stop Record
+  </button>
+  <button>
+    Resume Record
+  </button>
+</div>
+`;
+
+exports[`App hides/shows the buttons based on the recorder' state  4`] = `
+<div>
+  <video
+    autoplay=""
+    class="fullscreen"
+    loop=""
+    src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
+  <button>
+    Stop Record
+  </button>
+  <button>
+    Pause Record
+  </button>
+</div>
+`;
+
+exports[`App hides/shows the buttons based on the recorder' state  5`] = `
+<div>
+  <video
+    autoplay=""
+    class="fullscreen"
+    loop=""
+    src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
+  <button>
+    Start Record
+  </button>
+  <button
+    disabled="">
+    Pause Record
+  </button>
+</div>
+`;
+
+exports[`App renders empty when media access is denied 1`] = `undefined`;
+
+exports[`App renders empty while loading 1`] = `undefined`;
 
 exports[`App renders the video URL from the stream 1`] = `
-<App>
+<div>
   <video
-    autoPlay={true}
-    className="fullscreen-video"
-    loop={true}
-    muted={true}
+    autoplay=""
+    class="fullscreen"
+    loop=""
     src="http://localhost/e75dbc24-dd2c-4157-bf0e-f0a7773e98c8" />
-</App>
+  <button>
+    Start Record
+  </button>
+  <button
+    disabled="">
+    Pause Record
+  </button>
+</div>
 `;
