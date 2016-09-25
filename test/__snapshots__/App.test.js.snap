@@ -84,6 +84,23 @@ exports[`App renders empty when media access is denied 1`] = `undefined`;
 
 exports[`App renders empty while loading 1`] = `undefined`;
 
+exports[`App renders the preview URL from the recorder data 1`] = `
+<div>
+  <video
+    autoplay=""
+    class="fullscreen"
+    loop=""
+    src="http://localhost/e9b601bf-a151-4ab8-970d-b15d32622ab4" />
+  <button>
+    Start Record
+  </button>
+  <button
+    disabled="">
+    Pause Record
+  </button>
+</div>
+`;
+
 exports[`App renders the video URL from the stream 1`] = `
 <div>
   <video

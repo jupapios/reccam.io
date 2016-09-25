@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import RecorderMixin from './RecorderMixin';
 import mediaConstraints from './config/media-constraints';
-import recorderOptions from './config/media-recorder';
 import { mix } from 'mixwith';
 import 'webrtc-adapter';
 import './App.css';
 
 class App extends mix(Component).with(RecorderMixin) {
-  state = { videoURL: '' }
+  state = { videoURL: '', previewURL: '' }
 
   componentWillMount() {
     navigator.mediaDevices.getUserMedia(mediaConstraints)
@@ -17,12 +16,22 @@ class App extends mix(Component).with(RecorderMixin) {
 
   onCameraStream = (stream) => {
     const videoURL = URL.createObjectURL(stream);
-    this.recorder = new MediaRecorder(stream, recorderOptions);
+    this.initRecorder(stream);
     this.setState({ videoURL });
   }
 
   onCameraError = (error) => {
     this.setState({ error });
+  }
+
+  onRecorderStop = (chunks) => {
+    const blob = new Blob(chunks, { type: 'video/webm' });
+    const previewURL = URL.createObjectURL(blob);
+    this.setState({ previewURL });
+  }
+
+  shouldShowPreviewURL() {
+    return this.state.previewURL && this.isInactive();
   }
 
   startButton() {
@@ -44,8 +53,10 @@ class App extends mix(Component).with(RecorderMixin) {
   render() {
     if (!this.state.videoURL) return null;
 
+    const src = this.shouldShowPreviewURL() ? this.state.previewURL : this.state.videoURL;
+
     return <div>
-      <video className="fullscreen" src={this.state.videoURL} muted loop autoPlay />
+      <video className="fullscreen" src={src} muted loop autoPlay />
       {this.startButton()}
       {this.pauseButton()}
     </div>
