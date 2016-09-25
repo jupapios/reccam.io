@@ -6,7 +6,7 @@ import 'webrtc-adapter';
 import './App.css';
 
 class App extends mix(Component).with(RecorderMixin) {
-  state = { videoURL: '', previewURL: '' }
+  state = { videoURL: '', previewURL: '', hasRecordedChunks: false }
 
   componentWillMount() {
     navigator.mediaDevices.getUserMedia(mediaConstraints)
@@ -27,8 +27,10 @@ class App extends mix(Component).with(RecorderMixin) {
   onRecorderStop = (chunks) => {
     const blob = new Blob(chunks, { type: 'video/webm' });
     const previewURL = URL.createObjectURL(blob);
-    this.setState({ previewURL });
+    this.setState({ previewURL, hasRecordedChunks: true });
   }
+
+  onRecorderStart = () => this.setState({ hasRecordedChunks: false });
 
   shouldShowPreviewURL() {
     return this.state.previewURL && this.isInactive();
@@ -50,6 +52,10 @@ class App extends mix(Component).with(RecorderMixin) {
     return <button ref="pause" disabled={this.isInactive()} onClick={this.pauseRecording}>Pause Record</button>;
   }
 
+  downloadButton() {
+    return <button ref="download" disabled={!this.state.hasRecordedChunks}>Download</button>;
+  }
+
   render() {
     if (!this.state.videoURL) return null;
 
@@ -59,6 +65,7 @@ class App extends mix(Component).with(RecorderMixin) {
       <video className="fullscreen" src={src} muted loop autoPlay />
       {this.startButton()}
       {this.pauseButton()}
+      {this.downloadButton()}
     </div>
   }
 }

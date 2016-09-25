@@ -12,6 +12,10 @@ exports[`App hides/shows the buttons based on the recorder' state  1`] = `
     disabled="">
     Pause Record
   </button>
+  <button
+    disabled="">
+    Download
+  </button>
 </div>
 `;
 
@@ -27,6 +31,10 @@ exports[`App hides/shows the buttons based on the recorder' state  2`] = `
   </button>
   <button>
     Pause Record
+  </button>
+  <button
+    disabled="">
+    Download
   </button>
 </div>
 `;
@@ -44,6 +52,10 @@ exports[`App hides/shows the buttons based on the recorder' state  3`] = `
   <button>
     Resume Record
   </button>
+  <button
+    disabled="">
+    Download
+  </button>
 </div>
 `;
 
@@ -59,6 +71,10 @@ exports[`App hides/shows the buttons based on the recorder' state  4`] = `
   </button>
   <button>
     Pause Record
+  </button>
+  <button
+    disabled="">
+    Download
   </button>
 </div>
 `;
@@ -76,6 +92,9 @@ exports[`App hides/shows the buttons based on the recorder' state  5`] = `
   <button
     disabled="">
     Pause Record
+  </button>
+  <button>
+    Download
   </button>
 </div>
 `;
@@ -98,6 +117,9 @@ exports[`App renders the preview URL from the recorder data 1`] = `
     disabled="">
     Pause Record
   </button>
+  <button>
+    Download
+  </button>
 </div>
 `;
 
@@ -114,6 +136,10 @@ exports[`App renders the video URL from the stream 1`] = `
   <button
     disabled="">
     Pause Record
+  </button>
+  <button
+    disabled="">
+    Download
   </button>
 </div>
 `;
