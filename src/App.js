@@ -6,7 +6,7 @@ import 'webrtc-adapter';
 import './App.css';
 
 class App extends mix(Component).with(RecorderMixin) {
-  state = { videoURL: '', previewURL: '', hasRecordedChunks: false }
+  state = { videoURL: '', previewURL: '', hasRecorded: false }
 
   componentWillMount() {
     navigator.mediaDevices.getUserMedia(mediaConstraints)
@@ -27,10 +27,21 @@ class App extends mix(Component).with(RecorderMixin) {
   onRecorderStop = (chunks) => {
     const blob = new Blob(chunks, { type: 'video/webm' });
     const previewURL = URL.createObjectURL(blob);
-    this.setState({ previewURL, hasRecordedChunks: true });
+    this.setState({ previewURL, hasRecorded: true });
   }
 
-  onRecorderStart = () => this.setState({ hasRecordedChunks: false });
+  onRecorderStart = () => this.setState({ hasRecorded: false });
+
+  downloadVideo = () => {
+    const videoName = Math.floor(100000 + Math.random() * 900000);
+    const a = document.createElement('a')
+    a.download = `reccam-${videoName}.webm`;
+    a.hidden = true;
+    a.href = this.state.previewURL;
+
+    document.body.appendChild(a);
+    a.click();
+  }
 
   shouldShowPreviewURL() {
     return this.state.previewURL && this.isInactive();
@@ -53,7 +64,7 @@ class App extends mix(Component).with(RecorderMixin) {
   }
 
   downloadButton() {
-    return <button ref="download" disabled={!this.state.hasRecordedChunks}>Download</button>;
+    return <button ref="download" disabled={!this.state.hasRecorded} onClick={this.downloadVideo}>Download</button>;
   }
 
   render() {
