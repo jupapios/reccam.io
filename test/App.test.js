@@ -99,4 +99,27 @@ describe('App', () => {
 
     URL.createObjectURL.restore();
   });
+
+  it('downloads the recorder video', async() => {
+    const previewURL = 'http://localhost/e9b601bf-a151-4ab8-970d-b15d32622ab4';
+    sinon.stub(URL, 'createObjectURL', blob => previewURL);
+
+    const stream = new MediaStream();
+    deferred.resolve(stream);
+
+    await deferred.promise;
+
+    const downloadElement = document.createElement('a');
+    sinon.spy(downloadElement, 'click');
+    sinon.stub(document, 'createElement', () => downloadElement);
+
+    wrapper.ref('start').simulate('click');
+    wrapper.ref('stop').simulate('click');
+    wrapper.ref('download').simulate('click');
+
+    expect(downloadElement.href).toBe(previewURL);
+    expect(downloadElement.hidden).toBe(true);
+    expect(downloadElement.download).toBeDefined();
+    expect(downloadElement.click.calledOnce);
+  });
 });
