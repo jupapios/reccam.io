@@ -1,3 +1,4 @@
+/* global MediaRecorder */
 import recorderOptions from './config/media-recorder';
 
 const recorderSymbol = Symbol();

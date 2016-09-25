@@ -1,3 +1,4 @@
+/* global MediaRecorder */
 let options = { mimeType: 'video/webm' };
 
 if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
