@@ -30,6 +30,9 @@ class MediaRecorder extends EventTarget {
     }
     this.state = RECORDING;
     this.dispatchEvent({ type: 'start' });
+
+    const chunks = [new Blob, new Blob, new Blob];
+    chunks.forEach(data => this.dispatchEvent({ type: 'dataavailable', data }));
   }
   stop() {
     if (this.state === INACTIVE) {

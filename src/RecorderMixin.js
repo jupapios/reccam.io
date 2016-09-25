@@ -1,24 +1,47 @@
+import recorderOptions from './config/media-recorder';
+
 const recorderSymbol = Symbol();
+const chunksSymbol = Symbol();
+const onDataSymbol = Symbol();
+const onStartSymbol = Symbol();
+const onStopSymbol = Symbol();
+const updateRecorderStateSymbol = Symbol();
 
 const RecorderMixin = superclass => class extends superclass {
-  get recorder() {
-    return this[recorderSymbol];
-  }
-
-  set recorder(recorder) {
-    const className = recorder.constructor.name;
-    if (className !== 'MediaRecorder') {
-      throw new TypeError('Failed to assign \'recorder\': it is not of type \'MediaRecorder\'.');
-    }
-
+  initRecorder(stream) {
+    const recorder = new MediaRecorder(stream, recorderOptions);
     const stateEvents = ['start', 'stop', 'pause', 'resume'];
-    stateEvents.forEach(type => recorder.addEventListener(type, this.updateRecorderState));
+    stateEvents.forEach(type => recorder.addEventListener(type, this[updateRecorderStateSymbol].bind(this)));
+    recorder.addEventListener('start', this[onStartSymbol].bind(this));
+    recorder.addEventListener('stop', this[onStopSymbol].bind(this));
+    recorder.addEventListener('dataavailable', this[onDataSymbol].bind(this));
 
     this[recorderSymbol] = recorder;
-    this.updateRecorderState();
+    this[updateRecorderStateSymbol]();
   }
 
-  updateRecorderState = () => this.setState({ recorderState: this[recorderSymbol].state })
+  onRecorderData() {}
+  onRecorderStart() {}
+  onRecorderStop() {}
+
+  [onStartSymbol]() {
+    this[chunksSymbol] = [];
+    this.onRecorderStart();
+  }
+
+  [onStopSymbol]() {
+    const chunks = this[chunksSymbol];
+    this.onRecorderStop(chunks);
+  }
+
+  [onDataSymbol]({ data }) {
+    this[chunksSymbol].push(data);
+    this.onRecorderData(data);
+  }
+
+  [updateRecorderStateSymbol]() {
+    this.setState({ recorderState: this[recorderSymbol].state })
+  }
 
   isPaused = () => this.state.recorderState === 'paused'
   isInactive = () => this.state.recorderState === 'inactive'

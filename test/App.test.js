@@ -39,7 +39,7 @@ describe('App', () => {
     deferred.resolve(stream);
 
     await deferred.promise;
-    expect(URL.createObjectURL.calledWith(stream));
+    expect(URL.createObjectURL.firstCall.args[0].constructor.name).toBe('MediaStream');
     expect(renderToJson(wrapper.render())).toMatchSnapshot();
 
     URL.createObjectURL.restore();
@@ -77,6 +77,24 @@ describe('App', () => {
     expect(renderToJson(wrapper.render())).toMatchSnapshot();
 
     wrapper.ref('stop').simulate('click');
+    expect(renderToJson(wrapper.render())).toMatchSnapshot();
+
+    URL.createObjectURL.restore();
+  });
+
+  it('renders the preview URL from the recorder data', async () => {
+    const stream = new MediaStream();
+    deferred.resolve(stream);
+
+    await deferred.promise;
+
+    const previewURL = 'http://localhost/e9b601bf-a151-4ab8-970d-b15d32622ab4';
+    sinon.stub(URL, 'createObjectURL', blob => previewURL);
+
+    wrapper.ref('start').simulate('click');
+    wrapper.ref('stop').simulate('click');
+
+    expect(URL.createObjectURL.firstCall.args[0].constructor.name).toBe('Blob');
     expect(renderToJson(wrapper.render())).toMatchSnapshot();
 
     URL.createObjectURL.restore();
