@@ -49,22 +49,22 @@ class App extends mix(Component).with(RecorderMixin) {
 
   startButton() {
     if (this.isRecording()) {
-      return <button ref="stop" onClick={this.stopRecording}>Stop Record</button>;
+      return <button ref="stop" className="button-large fa fa-stop" onClick={this.stopRecording} />;
     }
 
-    return <button ref="start" onClick={this.startRecording}>Start Record</button>;
+    return <button ref="start" className="button-large fa fa-video-camera" onClick={this.startRecording} />;
   }
 
   pauseButton() {
     if (this.isPaused()) {
-      return <button ref="resume" disabled={this.isInactive()} onClick={this.resumeRecording}>Resume Record</button>;
+      return <button ref="resume" className="button-medium fa fa-play" disabled={this.isInactive()} onClick={this.resumeRecording} />;
     }
 
-    return <button ref="pause" disabled={this.isInactive()} onClick={this.pauseRecording}>Pause Record</button>;
+    return <button ref="pause" className="button-medium fa fa-pause" disabled={this.isInactive()} onClick={this.pauseRecording} />;
   }
 
   downloadButton() {
-    return <button ref="download" disabled={!this.state.hasRecorded} onClick={this.downloadVideo}>Download</button>;
+    return <button ref="download" className="button-medium fa fa-download" disabled={!this.state.hasRecorded} onClick={this.downloadVideo} />;
   }
 
   render() {
@@ -74,9 +74,11 @@ class App extends mix(Component).with(RecorderMixin) {
 
     return <div>
       <video className="fullscreen" src={src} muted loop autoPlay />
-      {this.startButton()}
-      {this.pauseButton()}
-      {this.downloadButton()}
+      <div className="buttons-container">
+        {this.pauseButton()}
+        {this.startButton()}
+        {this.downloadButton()}
+      </div>
     </div>
   }
 }

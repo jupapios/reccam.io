@@ -1,3 +1,18 @@
+@import compass/reset
+
+html,
+body
+  height: 100%
+
+// React specific elements
+#root,
+[data-reactroot]
+  height: inherit
+
+[data-reactroot]
+  display: flex
+  justify-content: center
+
 .fullscreen
   height: auto
   left: 50%
@@ -8,3 +23,41 @@
   transform: translate(-50%, -50%)
   width: auto
   z-index: -1
+
+.buttons-container
+  align-items: center
+  align-self: flex-end
+  display: flex
+  justify-content: space-around
+  padding-bottom: 10px
+  width: 100%
+  max-width: 640px
+
+[class*="button-"]
+  background-color: transparent
+  border: 2px solid white
+  color: white
+  outline: none
+  padding: 8px
+
+  &[disabled]
+    color: rgba(white, .6)
+    background-color: rgba(white, .2)
+    border-color: rgba(white, .6)
+
+@mixin circle($size)
+  border-radius: $size/2
+  height: $size
+  min-height: $size
+  min-width: $size
+  width: $size
+
+.button-medium
+  @include circle(60px)
+  &.fa
+    font-size: 26px
+
+.button-large
+  @include circle(80px)
+  &.fa
+    font-size: 42px
