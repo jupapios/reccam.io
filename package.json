@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/gotik/reccam.io/issues"
   },
-  "homepage": "https://reccam.io#readme",
+  "homepage": "https://reccam.io",
   "devDependencies": {
     "enzyme": "^2.4.1",
     "enzyme-to-json": "^1.1.1",
