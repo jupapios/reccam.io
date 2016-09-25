@@ -5,17 +5,17 @@ exports[`App hides/shows the buttons based on the recorder' state  1`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
-  <button>
-    Start Record
-  </button>
-  <button
-    disabled="">
-    Pause Record
-  </button>
-  <button
-    disabled="">
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-pause"
+      disabled="" />
+    <button
+      class="button-large fa fa-video-camera" />
+    <button
+      class="button-medium fa fa-download"
+      disabled="" />
+  </div>
 </div>
 `;
 
@@ -26,16 +26,16 @@ exports[`App hides/shows the buttons based on the recorder' state  2`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
-  <button>
-    Stop Record
-  </button>
-  <button>
-    Pause Record
-  </button>
-  <button
-    disabled="">
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-pause" />
+    <button
+      class="button-large fa fa-stop" />
+    <button
+      class="button-medium fa fa-download"
+      disabled="" />
+  </div>
 </div>
 `;
 
@@ -46,16 +46,16 @@ exports[`App hides/shows the buttons based on the recorder' state  3`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
-  <button>
-    Stop Record
-  </button>
-  <button>
-    Resume Record
-  </button>
-  <button
-    disabled="">
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-play" />
+    <button
+      class="button-large fa fa-stop" />
+    <button
+      class="button-medium fa fa-download"
+      disabled="" />
+  </div>
 </div>
 `;
 
@@ -66,16 +66,16 @@ exports[`App hides/shows the buttons based on the recorder' state  4`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
-  <button>
-    Stop Record
-  </button>
-  <button>
-    Pause Record
-  </button>
-  <button
-    disabled="">
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-pause" />
+    <button
+      class="button-large fa fa-stop" />
+    <button
+      class="button-medium fa fa-download"
+      disabled="" />
+  </div>
 </div>
 `;
 
@@ -86,16 +86,16 @@ exports[`App hides/shows the buttons based on the recorder' state  5`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/714ceded-2c90-43e5-99b0-01bb1badf517" />
-  <button>
-    Start Record
-  </button>
-  <button
-    disabled="">
-    Pause Record
-  </button>
-  <button>
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-pause"
+      disabled="" />
+    <button
+      class="button-large fa fa-video-camera" />
+    <button
+      class="button-medium fa fa-download" />
+  </div>
 </div>
 `;
 
@@ -110,16 +110,16 @@ exports[`App renders the preview URL from the recorder data 1`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/e9b601bf-a151-4ab8-970d-b15d32622ab4" />
-  <button>
-    Start Record
-  </button>
-  <button
-    disabled="">
-    Pause Record
-  </button>
-  <button>
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-pause"
+      disabled="" />
+    <button
+      class="button-large fa fa-video-camera" />
+    <button
+      class="button-medium fa fa-download" />
+  </div>
 </div>
 `;
 
@@ -130,16 +130,16 @@ exports[`App renders the video URL from the stream 1`] = `
     class="fullscreen"
     loop=""
     src="http://localhost/e75dbc24-dd2c-4157-bf0e-f0a7773e98c8" />
-  <button>
-    Start Record
-  </button>
-  <button
-    disabled="">
-    Pause Record
-  </button>
-  <button
-    disabled="">
-    Download
-  </button>
+  <div
+    class="buttons-container">
+    <button
+      class="button-medium fa fa-pause"
+      disabled="" />
+    <button
+      class="button-large fa fa-video-camera" />
+    <button
+      class="button-medium fa fa-download"
+      disabled="" />
+  </div>
 </div>
 `;
