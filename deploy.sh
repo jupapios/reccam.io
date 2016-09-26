@@ -4,7 +4,9 @@ current_branch="$(git rev-parse --abbrev-ref HEAD)"
 
 echo "Deploying branch $current_branch ($commit_msg)"
 
+compass compile
 npm run build
+
 git checkout -B gh-pages
 git add -f build
 git commit -am "$commit"
