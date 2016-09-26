@@ -1,5 +1,5 @@
 now=$(date +"%m-%d-%y %H:%M:%S")
-commit_msg="Deployment $now"
+commit_msg="Deployment from CircleCI $now"
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
 
 echo "Deploying branch $current_branch ($commit_msg)"
