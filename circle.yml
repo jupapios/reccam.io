@@ -10,4 +10,4 @@ deployment:
   master:
     branch: master
     commands:
-      - ./deploy.sh
+      - ./ci_deploy.sh
