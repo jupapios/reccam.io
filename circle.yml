@@ -3,5 +3,11 @@ machine:
     version: 6.6.0
 dependencies:
   pre:
+    - gem install compass
     - npm config set spin false
     - npm install -g npm@3.x.x
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./ci_deploy.sh
