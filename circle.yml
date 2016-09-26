@@ -5,3 +5,8 @@ dependencies:
   pre:
     - npm config set spin false
     - npm install -g npm@3.x.x
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./deploy.sh
