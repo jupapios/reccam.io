@@ -27,7 +27,7 @@
     "enzyme-to-json": "^1.1.1",
     "mixwith": "^0.1.1",
     "react-addons-test-utils": "^15.3.2",
-    "react-scripts": "0.6.0",
+    "react-scripts": "0.6.1",
     "sinon": "^1.17.6",
     "uuid": "^2.0.3"
   },
