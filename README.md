@@ -6,27 +6,40 @@
 
 ## Development
 
+### Requirments
+
+- [nodenv](https://github.com/nodenv/nodenv#installation)
+- [yarn](https://yarnpkg.com/en/docs/install)
+- [bundler](https://bundler.io/#getting-started)
+
 ### Setup
 
-#### 1. Install the project
+#### 1. Clone the repo
 
 ```bash
-git clone https://github.com/gotik/reccam.io.git && cd reccam.io
-npm i
-bundle i
+git clone https://github.com/gotik/reccam.io.git
+cd reccam.io
 ```
 
-#### 2. Run it!
+#### 2. Install dependencies
+
+```bash
+nodenv install
+yarn install
+bundle install
+```
+
+#### 3. Run it!
 
 ```bash
 compass watch
-npm start
+yarn start
 ```
 
 ### Running Tests
 
 ```
-npm test
+yarn test
 ```
 
 [circleci-url]: https://circleci.com/gh/gotik/reccam.io
