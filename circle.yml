@@ -4,8 +4,14 @@ machine:
 dependencies:
   pre:
     - gem install compass
-    - npm config set spin false
-    - npm install -g npm@3.x.x
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+  cache_directories:
+    - ~/.yarn-cache
+  override:
+    - yarn
+test:
+  override:
+    - yarn test
 deployment:
   master:
     branch: master
