@@ -13,7 +13,7 @@
     "url": "git+https://github.com/gotik/reccam.io.git"
   },
   "engines": {
-    "node": "6.6.0",
+    "node": "6.8.0",
     "npm": "3.x.x"
   },
   "author": "Juan Pablo Pinilla Ossa <juan@kamikazepanda.com>",
@@ -23,8 +23,8 @@
   },
   "homepage": "https://reccam.io",
   "devDependencies": {
-    "enzyme": "^2.4.1",
-    "enzyme-to-json": "^1.1.1",
+    "enzyme": "^2.5.1",
+    "enzyme-to-json": "^1.1.4",
     "mixwith": "^0.1.1",
     "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.6.1",
@@ -36,7 +36,7 @@
     "ismobilejs": "^0.4.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "webrtc-adapter": "^2.0.3"
+    "webrtc-adapter": "^2.0.4"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
