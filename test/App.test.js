@@ -100,7 +100,7 @@ describe('App', () => {
     URL.createObjectURL.restore();
   });
 
-  it('downloads the recorder video', async() => {
+  it('downloads the recorded video', async() => {
     const previewURL = 'http://localhost/e9b601bf-a151-4ab8-970d-b15d32622ab4';
     sinon.stub(URL, 'createObjectURL', blob => previewURL);
 
