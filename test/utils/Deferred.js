@@ -1,10 +1,10 @@
 class Deferred {
-  constructor() {
+  constructor () {
     this.promise = new Promise((resolve, reject) => {
       this.reject = reject
       this.resolve = resolve
-    });
+    })
   }
 }
 
-export default Deferred;
+export default Deferred

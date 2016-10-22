@@ -1,46 +1,46 @@
 /* global MediaRecorder */
-import recorderOptions from './config/media-recorder';
+import recorderOptions from './config/media-recorder'
 
-const recorderSymbol = Symbol();
-const chunksSymbol = Symbol();
-const onDataSymbol = Symbol();
-const onStartSymbol = Symbol();
-const onStopSymbol = Symbol();
-const updateRecorderStateSymbol = Symbol();
+const recorderSymbol = Symbol()
+const chunksSymbol = Symbol()
+const onDataSymbol = Symbol()
+const onStartSymbol = Symbol()
+const onStopSymbol = Symbol()
+const updateRecorderStateSymbol = Symbol()
 
 const RecorderMixin = superclass => class extends superclass {
-  initRecorder(stream) {
-    const recorder = new MediaRecorder(stream, recorderOptions);
-    const stateEvents = ['start', 'stop', 'pause', 'resume'];
-    stateEvents.forEach(type => recorder.addEventListener(type, this[updateRecorderStateSymbol].bind(this)));
-    recorder.addEventListener('start', this[onStartSymbol].bind(this));
-    recorder.addEventListener('stop', this[onStopSymbol].bind(this));
-    recorder.addEventListener('dataavailable', this[onDataSymbol].bind(this));
+  initRecorder (stream) {
+    const recorder = new MediaRecorder(stream, recorderOptions)
+    const stateEvents = ['start', 'stop', 'pause', 'resume']
+    stateEvents.forEach(type => recorder.addEventListener(type, this[updateRecorderStateSymbol].bind(this)))
+    recorder.addEventListener('start', this[onStartSymbol].bind(this))
+    recorder.addEventListener('stop', this[onStopSymbol].bind(this))
+    recorder.addEventListener('dataavailable', this[onDataSymbol].bind(this))
 
-    this[recorderSymbol] = recorder;
-    this[updateRecorderStateSymbol]();
+    this[recorderSymbol] = recorder
+    this[updateRecorderStateSymbol]()
   }
 
-  onRecorderData() {}
-  onRecorderStart() {}
-  onRecorderStop() {}
+  onRecorderData () {}
+  onRecorderStart () {}
+  onRecorderStop () {}
 
-  [onStartSymbol]() {
-    this[chunksSymbol] = [];
-    this.onRecorderStart();
+  [onStartSymbol] () {
+    this[chunksSymbol] = []
+    this.onRecorderStart()
   }
 
-  [onStopSymbol]() {
-    const chunks = this[chunksSymbol];
-    this.onRecorderStop(chunks);
+  [onStopSymbol] () {
+    const chunks = this[chunksSymbol]
+    this.onRecorderStop(chunks)
   }
 
-  [onDataSymbol]({ data }) {
-    this[chunksSymbol].push(data);
-    this.onRecorderData(data);
+  [onDataSymbol] ({ data }) {
+    this[chunksSymbol].push(data)
+    this.onRecorderData(data)
   }
 
-  [updateRecorderStateSymbol]() {
+  [updateRecorderStateSymbol] () {
     this.setState({ recorderState: this[recorderSymbol].state })
   }
 
@@ -54,4 +54,4 @@ const RecorderMixin = superclass => class extends superclass {
   resumeRecording = () => this[recorderSymbol].resume()
 }
 
-export default RecorderMixin;
+export default RecorderMixin

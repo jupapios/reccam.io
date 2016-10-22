@@ -22,12 +22,14 @@
   },
   "homepage": "https://reccam.io",
   "devDependencies": {
+    "babel-eslint": "^7.0.0",
     "enzyme": "^2.5.1",
     "enzyme-to-json": "^1.1.4",
     "mixwith": "^0.1.1",
     "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.6.1",
     "sinon": "^1.17.6",
+    "standard": "^8.4.0",
     "uuid": "^2.0.3"
   },
   "dependencies": {
@@ -39,5 +41,19 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "beforeEach",
+      "it",
+      "expect",
+      "MediaRecorder",
+      "URL",
+      "MediaStream",
+      "Blob",
+      "DOMException"
+    ]
   }
 }

@@ -1,60 +1,60 @@
-import EventTarget from './EventTarget';
+import EventTarget from './EventTarget'
 
-const INACTIVE = 'inactive';
-const PAUSED = 'paused';
-const RECORDING = 'recording';
+const INACTIVE = 'inactive'
+const PAUSED = 'paused'
+const RECORDING = 'recording'
 
 class MediaRecorder extends EventTarget {
-  static isTypeSupported(type) {
-    return type === 'video/webm;codecs=vp9' || type === 'video/webm;codecs=vp8';
+  static isTypeSupported (type) {
+    return type === 'video/webm;codecs=vp9' || type === 'video/webm;codecs=vp8'
   }
 
   state = INACTIVE
 
-  constructor(stream, options) {
-    super();
+  constructor (stream, options) {
+    super()
 
     if (!arguments.length) {
-      throw new TypeError('Failed to construct \'MediaRecorder\': 1 argument required, but only 0 present.');
+      throw new TypeError(`Failed to construct 'MediaRecorder': 1 argument required, but only 0 present.`)
     }
 
-    const className = stream.constructor.name;
+    const className = stream.constructor.name
     if (className !== 'MediaStream') {
-      throw new TypeError('Failed to construct \'MediaRecorder\': parameter 1 is not of type \'MediaStream\'.');
+      throw new TypeError(`Failed to construct 'MediaRecorder': parameter 1 is not of type 'MediaStream'.`)
     }
   }
 
-  start() {
+  start () {
     if (this.state !== INACTIVE) {
-      throw new DOMException('Failed to execute \'start\' on \'MediaRecorder\': The MediaRecorder\'s state is \'${this.state}\'.');
+      throw new DOMException(`Failed to execute 'start' on 'MediaRecorder': The MediaRecorder's state is '${this.state}'.`)
     }
-    this.state = RECORDING;
-    this.dispatchEvent({ type: 'start' });
+    this.state = RECORDING
+    this.dispatchEvent({ type: 'start' })
 
-    const chunks = [new Blob, new Blob, new Blob];
-    chunks.forEach(data => this.dispatchEvent({ type: 'dataavailable', data }));
+    const chunks = [new Blob(), new Blob(), new Blob()]
+    chunks.forEach(data => this.dispatchEvent({ type: 'dataavailable', data }))
   }
-  stop() {
+  stop () {
     if (this.state === INACTIVE) {
-      throw new DOMException('Failed to execute \'stop\' on \'MediaRecorder\': The MediaRecorder\'s state is \'${this.state}\'.');
+      throw new DOMException(`Failed to execute 'stop' on 'MediaRecorder': The MediaRecorder's state is '${this.state}'.`)
     }
-    this.state = INACTIVE;
-    this.dispatchEvent({ type: 'stop' });
+    this.state = INACTIVE
+    this.dispatchEvent({ type: 'stop' })
   }
-  pause() {
+  pause () {
     if (this.state !== RECORDING) {
-      throw new DOMException('Failed to execute \'pause\' on \'MediaRecorder\': The MediaRecorder\'s state is \'${this.state}\'.');
+      throw new DOMException(`Failed to execute 'pause' on 'MediaRecorder': The MediaRecorder's state is '${this.state}'.`)
     }
-    this.state = PAUSED;
-    this.dispatchEvent({ type: 'pause' });
+    this.state = PAUSED
+    this.dispatchEvent({ type: 'pause' })
   }
-  resume() {
+  resume () {
     if (this.state !== PAUSED) {
-      throw new DOMException('Failed to execute \'resume\' on \'MediaRecorder\': The MediaRecorder\'s state is \'${this.state}\'.');
+      throw new DOMException(`Failed to execute 'resume' on 'MediaRecorder': The MediaRecorder's state is '${this.state}'.`)
     }
-    this.state = RECORDING;
-    this.dispatchEvent({ type: 'resume' });
+    this.state = RECORDING
+    this.dispatchEvent({ type: 'resume' })
   }
 }
 
-export default MediaRecorder;
+export default MediaRecorder

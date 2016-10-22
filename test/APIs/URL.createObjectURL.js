@@ -1,12 +1,12 @@
-import uuid from 'uuid';
+import uuid from 'uuid'
 
-function createObjectURL(stream) {
-  const className = stream.constructor.name;
+function createObjectURL (stream) {
+  const className = stream.constructor.name
   if (className === 'Blob' || className === 'MediaStream') {
-    return `http://localhost/${uuid()}`;
+    return `http://localhost/${uuid()}`
   } else {
-    throw new TypeError('Failed to execute \'createObjectURL\' on \'URL\': No function was found that matched the signature provided.');
+    throw new TypeError('Failed to execute \'createObjectURL\' on \'URL\': No function was found that matched the signature provided.')
   }
 }
 
-export default createObjectURL;
+export default createObjectURL
