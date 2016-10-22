@@ -5,7 +5,7 @@ current_branch="$(git rev-parse --abbrev-ref HEAD)"
 echo "Deploying branch $current_branch ($commit_msg)"
 
 compass compile
-npm run build
+yarn build
 
 git config user.name "CircleCI"
 git config user.email "circleci@reccam.io"
