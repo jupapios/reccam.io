@@ -13,8 +13,7 @@
     "url": "git+https://github.com/gotik/reccam.io.git"
   },
   "engines": {
-    "node": "6.8.0",
-    "npm": "3.x.x"
+    "node": "6.9.1"
   },
   "author": "Juan Pablo Pinilla Ossa <juan@kamikazepanda.com>",
   "license": "ISC",
