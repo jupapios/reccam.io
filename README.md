@@ -1,4 +1,4 @@
-# [reccam.io](reccam.io) source code [![CircleCI Build][circleci-image]][circleci-url]
+# [reccam.io](reccam.io) source code [![CircleCI Build][circleci-image]][circleci-url] [![Standard - JavaScript Style Guide][standardjs-image]][standardjs-url]
 
 [getUserMedia][getusermedia-url] and [MediaRecorder][mediarecorder-url] experiment
 
@@ -42,6 +42,8 @@ yarn start
 yarn test
 ```
 
+[standardjs-url]: http://standardjs.com
+[standardjs-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [circleci-url]: https://circleci.com/gh/gotik/reccam.io
 [circleci-image]: https://circleci.com/gh/gotik/reccam.io.svg?style=shield
 [getusermedia-url]: https://www.w3.org/TR/mediacapture-streams

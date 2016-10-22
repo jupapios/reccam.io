@@ -4,4 +4,4 @@ class NavigatorUserMediaError extends Error {
   message = ''
 }
 
-export default NavigatorUserMediaError;
+export default NavigatorUserMediaError
