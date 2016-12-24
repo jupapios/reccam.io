@@ -28,7 +28,7 @@
     "enzyme-to-json": "^1.1.4",
     "mixwith": "^0.1.1",
     "react-addons-test-utils": "^15.3.2",
-    "react-scripts": "0.6.1",
+    "react-scripts": "0.7.0",
     "sinon": "^1.17.6",
     "standard": "^8.4.0",
     "uuid": "^2.0.3"
@@ -38,7 +38,7 @@
     "ismobilejs": "^0.4.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "webrtc-adapter": "^2.0.4"
+    "webrtc-adapter": "^2.0.5"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
